@@ -1,3 +1,8 @@
+## 3.1.0
+
+* Migrated to null safety
+* Updated dependencies
+
 ## 2.3.2
 *Fixed - fix url error with query #146
 

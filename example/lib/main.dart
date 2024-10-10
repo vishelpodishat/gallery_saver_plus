@@ -1,3 +1,4 @@
+import 'dart:async';
 import 'dart:io';
 import 'dart:typed_data';
 import 'dart:ui' as ui;
@@ -5,7 +6,7 @@ import 'dart:ui' as ui;
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter/services.dart';
-import 'package:gallery_saver/gallery_saver.dart';
+import 'package:gallery_saver_plus/gallery_saver.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:path_provider/path_provider.dart';
 
@@ -79,36 +80,36 @@ class _MyAppState extends State<MyApp> {
     ImagePicker()
         .getImage(source: ImageSource.camera)
         .then((PickedFile recordedImage) {
-      if (recordedImage != null && recordedImage.path != null) {
-        setState(() {
-          firstButtonText = 'saving in progress...';
-        });
-        GallerySaver.saveImage(recordedImage.path, albumName: albumName)
-            .then((bool success) {
-          setState(() {
-            firstButtonText = 'image saved!';
-          });
-        });
-      }
-    });
+          if (recordedImage != null && recordedImage.path != null) {
+            setState(() {
+              firstButtonText = 'saving in progress...';
+            });
+            GallerySaver.saveImage(recordedImage.path, albumName: albumName)
+                .then((bool success) {
+              setState(() {
+                firstButtonText = 'image saved!';
+              });
+            } as FutureOr<Null> Function(bool? value));
+          }
+        } as FutureOr<Null> Function(PickedFile? value));
   }
 
   void _recordVideo() async {
     ImagePicker()
         .getVideo(source: ImageSource.camera)
         .then((PickedFile recordedVideo) {
-      if (recordedVideo != null && recordedVideo.path != null) {
-        setState(() {
-          secondButtonText = 'saving in progress...';
-        });
-        GallerySaver.saveVideo(recordedVideo.path, albumName: albumName)
-            .then((bool success) {
-          setState(() {
-            secondButtonText = 'video saved!';
-          });
-        });
-      }
-    });
+          if (recordedVideo != null && recordedVideo.path != null) {
+            setState(() {
+              secondButtonText = 'saving in progress...';
+            });
+            GallerySaver.saveVideo(recordedVideo.path, albumName: albumName)
+                .then((bool success) {
+              setState(() {
+                secondButtonText = 'video saved!';
+              });
+            } as FutureOr<Null> Function(bool? value));
+          }
+        } as FutureOr<Null> Function(PickedFile? value));
   }
 
   // ignore: unused_element
@@ -119,7 +120,7 @@ class _MyAppState extends State<MyApp> {
       setState(() {
         print('Video is saved');
       });
-    });
+    } as FutureOr<Null> Function(bool? value));
   }
 
   // ignore: unused_element
@@ -130,7 +131,7 @@ class _MyAppState extends State<MyApp> {
       setState(() {
         print('Image is saved');
       });
-    });
+    } as FutureOr<Null> Function(bool? value));
   }
 }
 
@@ -170,26 +171,26 @@ class _ScreenshotWidgetState extends State<ScreenshotWidget> {
       screenshotButtonText = 'saving in progress...';
     });
     try {
-      //extract bytes
-      final RenderRepaintBoundary boundary =
-          _globalKey.currentContext.findRenderObject();
-      final ui.Image image = await boundary.toImage(pixelRatio: 3.0);
-      final ByteData byteData =
-          await image.toByteData(format: ui.ImageByteFormat.png);
-      final Uint8List pngBytes = byteData.buffer.asUint8List();
+      // //extract bytes
+      // final RenderObject? boundary =
+      //     _globalKey.currentContext?.findRenderObject();
+      // final ui.Image image = await boundary.toImage(pixelRatio: 3.0);
+      // final ByteData byteData =
+      //     await image.toByteData(format: ui.ImageByteFormat.png);
+      // final Uint8List pngBytes = byteData.buffer.asUint8List();
 
-      //create file
-      final String dir = (await getApplicationDocumentsDirectory()).path;
-      final String fullPath = '$dir/${DateTime.now().millisecond}.png';
-      File capturedFile = File(fullPath);
-      await capturedFile.writeAsBytes(pngBytes);
-      print(capturedFile.path);
+      // //create file
+      // final String dir = (await getApplicationDocumentsDirectory()).path;
+      // final String fullPath = '$dir/${DateTime.now().millisecond}.png';
+      // File capturedFile = File(fullPath);
+      // await capturedFile.writeAsBytes(pngBytes);
+      // print(capturedFile.path);
 
-      await GallerySaver.saveImage(capturedFile.path).then((value) {
-        setState(() {
-          screenshotButtonText = 'screenshot saved!';
-        });
-      });
+      // await GallerySaver.saveImage(capturedFile.path).then((value) {
+      //   setState(() {
+      //     screenshotButtonText = 'screenshot saved!';
+      //   });
+      // });
     } catch (e) {
       print(e);
     }

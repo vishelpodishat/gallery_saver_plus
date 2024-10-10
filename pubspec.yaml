@@ -1,11 +1,11 @@
-name: gallery_saver
+name: gallery_saver_plus
 description: Saves images and videos from network or temporary file to external storage. Both images and videos will be visible in Android Gallery and iOS Photos.
-version: 2.3.2
-homepage: https://github.com/CarnegieTechnologies/gallery_saver
+version: 3.1.0
+homepage: https://github.com/mafreud/gallery_saver_plus
 
 environment:
-  sdk: '>=2.12.0 <3.0.0'
-  flutter: ">=1.10.0"
+  sdk: '>=3.0.0 <4.0.0'
+  flutter: ">=3.0.0"
 
 module:
  androidX: true
@@ -13,9 +13,9 @@ module:
 dependencies:
   flutter:
     sdk: flutter
-  path_provider: ^2.0.2
-  http: ^0.13.3
-  path: ^1.8.0
+  path_provider: ^2.1.4
+  http: ^1.2.2
+  path: ^1.9.0
 
 dev_dependencies:
   flutter_test:
