@@ -1,3 +1,8 @@
+## 3.1.1
+
+* Updated dependencies
+* Updated README.md
+
 ## 3.1.0
 
 * Migrated to null safety

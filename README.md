@@ -8,7 +8,7 @@ NOTE: If you want to save network image or video link, it has to contain 'http/h
 
 ## Installation
 
-First, add `gallery_saver` as a [dependency in your pubspec.yaml file](https://flutter.io/platform-plugins/).
+First, add `gallery_saver_plus` as a [dependency in your pubspec.yaml file](https://flutter.io/platform-plugins/).
 
 ### iOS
 
@@ -26,7 +26,7 @@ Add the following keys to your _Info.plist_ file, located in `<project root>/ios
 import 'dart:io';
 
 import 'package:flutter/material.dart';
-import 'package:gallery_saver/gallery_saver.dart';
+import 'package:gallery_saver_plus/gallery_saver.dart';
 import 'package:image_picker/image_picker.dart';
 
 void main() => runApp(MyApp());
