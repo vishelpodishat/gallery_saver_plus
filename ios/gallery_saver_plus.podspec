@@ -2,7 +2,7 @@
 # To learn more about a Podspec see http://guides.cocoapods.org/syntax/podspec.html
 #
 Pod::Spec.new do |s|
-  s.name             = 'gallery_saver'
+  s.name             = 'gallery_saver_plus'
   s.version          = '0.0.1'
   s.summary          = 'Saves images and videos to gallery and photos.'
   s.description      = <<-DESC
@@ -16,7 +16,6 @@ Saves images and videos to gallery and photos.
   s.public_header_files = 'Classes/**/*.h'
   s.dependency 'Flutter'
   s.swift_version = '5.0'
-
-  s.ios.deployment_target = '8.0'
+  s.platform = :ios, '11.0'
+  s.pod_target_xcconfig = { 'DEFINES_MODULE' => 'YES' }
 end
-
